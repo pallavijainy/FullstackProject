@@ -1,6 +1,5 @@
 import React from "react";
-
-import ProductList from "../features/ProductList/ProductList";
+import ProductList from "../features/ProductList/component/ProductList";
 
 const Home = () => {
   return (

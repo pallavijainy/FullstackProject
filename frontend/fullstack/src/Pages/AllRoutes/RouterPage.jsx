@@ -6,6 +6,7 @@ import LoginPage from "./../LoginPage";
 import SignupPage from "./../SignupPage";
 import CheckOut from "./../CheckOut";
 import PayNow from "../PayNow";
+import ProductDetailPage from "../ProductDetailPage";
 
 const RouterPage = () => {
   return (
@@ -16,6 +17,7 @@ const RouterPage = () => {
       <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/checkout" element={<CheckOut />}></Route>
       <Route path="/pay" element={<PayNow />}></Route>
+      <Route path="/productdetail" element={<ProductDetailPage />}></Route>
     </Routes>
   );
 };
