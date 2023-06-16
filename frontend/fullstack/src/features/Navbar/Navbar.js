@@ -70,14 +70,17 @@ function Navbar({ children }) {
                         type="button"
                         className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                       >
-                        <ShoppingCartIcon
-                          className="h-6 w-6"
-                          aria-hidden="true"
-                        />
+                        <Link to={"/cart"}>
+                          <ShoppingCartIcon
+                            className="h-6 w-6"
+                            aria-hidden="true"
+                          />
+                        </Link>
                       </button>
                       <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
                         3
                       </span>
+
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
                         <div>
@@ -180,10 +183,12 @@ function Navbar({ children }) {
                       type="button"
                       className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                     >
-                      <ShoppingCartIcon
-                        className="h-6 w-6"
-                        aria-hidden="true"
-                      />
+                      <Link to={"/cart"}>
+                        <ShoppingCartIcon
+                          className="h-6 w-6"
+                          aria-hidden="true"
+                        />
+                      </Link>
                     </button>
                     <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
                       3
