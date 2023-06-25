@@ -62,7 +62,7 @@ const filters = [
     ],
   },
   {
-    id: "brands",
+    id: "brand",
     name: "Brands",
     options: [
       { value: "Apple", label: "Apple", checked: false },
@@ -201,7 +201,7 @@ export default function ProductList() {
   const [data, setData] = useState({});
   const [sorted, setSorted] = useState({});
   const products = useSelector(selectAllProducts);
-  console.log(products);
+
   const dispatch = useDispatch();
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -212,9 +212,12 @@ export default function ProductList() {
   }, [dispatch, data, sorted]);
 
   const handleFilter = (section, option, e) => {
-    let newData = { [section.id]: option.value };
+    let newData = { ...data, [section.id]: option.value };
+    console.log(newData);
     if (e.target.checked) {
       setData(newData);
+    } else {
+      setData("");
     }
   };
 

@@ -19,7 +19,7 @@ export function FilterAllProducts(data, sorted) {
   console.log(str);
 
   return new Promise(async (resolve) => {
-    const response = await fetch(`http://localhost:8080/products?${str}`);
+    const response = await fetch(`http://localhost:8080/products?` + str);
     const data = await response.json();
     resolve({ data });
   });
