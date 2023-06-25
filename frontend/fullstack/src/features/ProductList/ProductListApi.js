@@ -10,7 +10,12 @@ export function FilterAllProducts(data, sorted) {
   let str = "";
 
   for (let key in data) {
-    str += `${key}=${data[key]}&`;
+    const categoryvalue = data[key];
+
+    if (categoryvalue.length) {
+      const lastcategoryValue = categoryvalue[categoryvalue.length - 1];
+      str += `${key}=${lastcategoryValue}&`;
+    }
   }
 
   for (let key in sorted) {

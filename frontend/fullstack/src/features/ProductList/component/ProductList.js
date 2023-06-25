@@ -212,17 +212,23 @@ export default function ProductList() {
   }, [dispatch, data, sorted]);
 
   const handleFilter = (section, option, e) => {
-    let newData = { ...data, [section.id]: option.value };
-    console.log(newData);
+    const newData = { ...data };
+
     if (e.target.checked) {
-      setData(newData);
+      if (newData[section.id]) {
+        newData[section.id].push(option.value);
+      } else {
+        newData[section.id] = [option.value];
+      }
     } else {
-      setData("");
+      const index = newData[section.id].findIndex((el) => el === option.value);
+      newData[section.id].splice(index, 1);
     }
+    setData(newData);
   };
 
   const handleSort = (sorting, ordering) => {
-    let newSortedData = { ["_sort"]: sorting, ["_order"]: ordering };
+    let newSortedData = { _sort: sorting, _order: ordering };
     console.log(newSortedData);
     setSorted(newSortedData);
   };
@@ -237,6 +243,7 @@ export default function ProductList() {
             <MobileFilter
               setMobileFiltersOpen={setMobileFiltersOpen}
               mobileFiltersOpen={mobileFiltersOpen}
+              handleFilter={handleFilter}
             />
 
             <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -472,7 +479,11 @@ function ProductGrid({ products }) {
   );
 }
 
-function MobileFilter({ mobileFiltersOpen, setMobileFiltersOpen }) {
+function MobileFilter({
+  mobileFiltersOpen,
+  setMobileFiltersOpen,
+  handleFilter,
+}) {
   return (
     <Transition.Root show={mobileFiltersOpen} as={Fragment}>
       <Dialog
@@ -558,6 +569,9 @@ function MobileFilter({ mobileFiltersOpen, setMobileFiltersOpen }) {
                                   defaultValue={option.value}
                                   type="checkbox"
                                   defaultChecked={option.checked}
+                                  onChange={(e) =>
+                                    handleFilter(section, option, e)
+                                  }
                                   className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
                                 />
                                 <label
