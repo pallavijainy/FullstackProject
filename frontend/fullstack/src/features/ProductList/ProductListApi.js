@@ -6,16 +6,15 @@ export function fetchAllProducts() {
   });
 }
 
-export function FilterAllProducts(data, sorted) {
+export function FilterAllProducts(data, sorted, Pagination) {
   let str = "";
 
   for (let key in data) {
     const categoryvalue = data[key];
 
-    if (categoryvalue.length) {
-      const lastcategoryValue = categoryvalue[categoryvalue.length - 1];
-      str += `${key}=${lastcategoryValue}&`;
-    }
+    categoryvalue.forEach((el) => {
+      str += `${key}=${el}&`;
+    });
   }
 
   for (let key in sorted) {
@@ -23,9 +22,15 @@ export function FilterAllProducts(data, sorted) {
   }
   console.log(str);
 
+  for (let key in Pagination) {
+    str += `${key}=${Pagination[key]}&`;
+  }
+  console.log(str);
+
   return new Promise(async (resolve) => {
     const response = await fetch(`http://localhost:8080/products?` + str);
     const data = await response.json();
-    resolve({ data });
+    const totalItems = await response.headers.get("X-Total-Count");
+    resolve({ data: { products: data, totalItems: +totalItems } });
   });
 }
