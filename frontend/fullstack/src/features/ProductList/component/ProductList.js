@@ -206,7 +206,7 @@ export default function ProductList() {
   const products = useSelector(selectAllProducts);
   console.log(products);
   const totalItem = useSelector(totalItemProduct);
-  console.log(totalItem);
+
   const dispatch = useDispatch();
 
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
@@ -217,11 +217,17 @@ export default function ProductList() {
     dispatch(FilterAllProductsAsync({ data, sorted, pagination }));
   }, [dispatch, data, sorted, page]);
 
+  useEffect(() => {
+    if (totalItem < 100) {
+      let current = Math.round(totalItem / (ITEMS_PER_PAGE - 1));
+      setPage(current);
+    }
+  }, [totalItem]);
+
   const handleFilter = (section, option, e) => {
     const newData = { ...data };
 
     if (e.target.checked) {
-      setPage(1);
       if (newData[section.id]) {
         newData[section.id].push(option.value);
       } else {
@@ -230,11 +236,6 @@ export default function ProductList() {
     } else {
       const index = newData[section.id].findIndex((el) => el === option.value);
       newData[section.id].splice(index, 1);
-      if (totalItem / ITEMS_PER_PAGE < page) {
-        if (page > 1) {
-          setPage(page - 1);
-        }
-      }
     }
     setData(newData);
   };
@@ -242,6 +243,7 @@ export default function ProductList() {
   const handleSort = (sorting, ordering) => {
     let newSortedData = { _sort: sorting, _order: ordering };
     console.log(newSortedData);
+    setPage(1);
     setSorted(newSortedData);
   };
 
