@@ -17,7 +17,7 @@ const RouterPage = () => {
       <Route path="/cart" element={<CartPage />}></Route>
       <Route path="/checkout" element={<CheckOut />}></Route>
       <Route path="/pay" element={<PayNow />}></Route>
-      <Route path="/productdetail" element={<ProductDetailPage />}></Route>
+      <Route path="/productdetail/:id" element={<ProductDetailPage />}></Route>
     </Routes>
   );
 };
