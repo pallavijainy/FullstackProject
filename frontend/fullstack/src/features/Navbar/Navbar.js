@@ -12,15 +12,15 @@ const user = {
 };
 const navigation = [
   { name: "Dashboard", to: "/", current: true },
-  { name: "Team", href: "#", current: false },
-  { name: "Projects", href: "#", current: false },
+  { name: "Team", to: "#", current: false },
+  { name: "Projects", to: "#", current: false },
   { name: "Login", to: "/login", current: false },
   { name: "Signup", to: "/signup", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
-  { name: "Settings", href: "#" },
-  { name: "Sign out", href: "#" },
+  { name: "Your Profile", to: "/" },
+  { name: "Settings", to: "/" },
+  { name: "Sign out", to: "/" },
 ];
 
 function classNames(...classes) {
@@ -107,7 +107,7 @@ function Navbar({ children }) {
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
                                   <a
-                                    href={item.href}
+                                    to={item.to}
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
                                       "block px-4 py-2 text-sm text-gray-700"
@@ -149,7 +149,7 @@ function Navbar({ children }) {
                     <Disclosure.Button
                       key={item.name}
                       as="a"
-                      href={item.href}
+                      to={item.to}
                       className={classNames(
                         item.current
                           ? "bg-gray-900 text-white"
@@ -199,7 +199,7 @@ function Navbar({ children }) {
                       <Disclosure.Button
                         key={item.name}
                         as="a"
-                        href={item.href}
+                        to={item.to}
                         className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
                       >
                         {item.name}

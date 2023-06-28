@@ -48,7 +48,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -1426,7 +1428,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
+      ]
     },
     {
       "id": 79,
@@ -1439,7 +1443,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/79/1.jpg"
+      ]
     },
     {
       "id": 80,
@@ -2211,6 +2217,78 @@
       "value": "YIOSI",
       "label": "YIOSI",
       "checked": false
+    }
+  ],
+  "users": [
+    {
+      "email": "pallavijainy0612@gmail.com",
+      "password": "Pallavi@123",
+      "id": 1
+    },
+    {
+      "email": "komal@gmail.com",
+      "password": "Pallavi@123",
+      "id": 2
+    },
+    {
+      "email": "komal@gmail.com",
+      "password": "Pallavi@123",
+      "id": 3
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 4
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 5
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 6
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 7
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 8
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "\"Pallavi@123\"",
+      "id": 9
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "\"Pallavi@123\"",
+      "id": 10
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 11
+    },
+    {
+      "email": "eve.holt@reqres.in",
+      "password": "Pallavi@123",
+      "id": 12
+    },
+    {
+      "email": "komal@gmail.com",
+      "password": "Pallavi@123",
+      "id": 13
+    },
+    {
+      "email": "komal@gmail.com",
+      "password": "Pal@1234",
+      "id": 14
     }
   ]
 }

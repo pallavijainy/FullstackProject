@@ -7,6 +7,7 @@ import SignupPage from "./../SignupPage";
 import CheckOut from "./../CheckOut";
 import PayNow from "../PayNow";
 import ProductDetailPage from "../ProductDetailPage";
+import PrivateRoute from "../PrivateRoute";
 
 const RouterPage = () => {
   return (
@@ -14,7 +15,14 @@ const RouterPage = () => {
       <Route path="/" element={<Home />}></Route>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
-      <Route path="/cart" element={<CartPage />}></Route>
+      <Route
+        path="/cart"
+        element={
+          <PrivateRoute>
+            <CartPage />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/checkout" element={<CheckOut />}></Route>
       <Route path="/pay" element={<PayNow />}></Route>
       <Route path="/productdetail/:id" element={<ProductDetailPage />}></Route>

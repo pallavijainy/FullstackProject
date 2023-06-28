@@ -1,8 +1,37 @@
 // A mock function to mimic making an async request for data
-export function fetchCount(amount = 1) {
+import axios from "axios";
+
+//signup
+export function RegisterUser(userdata) {
   return new Promise(async (resolve) => {
-    const response = await fetch("http://localhost:8000");
-    const data = await response.json();
-    resolve({ data });
+    const response = await axios.post("http://localhost:8080/users", userdata);
+
+    resolve(response.data);
+  });
+}
+
+//login
+
+export function LoginUser(userdata) {
+  return new Promise(async (resolve, reject) => {
+    const email = userdata.email;
+    const password = userdata.password;
+
+    const response = await axios.get(
+      "http://localhost:8080/users?email=" + email
+    );
+
+    if (response.data.length) {
+      if (password === response.data[0].password) {
+        console.log(response.data[0]);
+        resolve({ msg: "User Logged in successfully" });
+      } else {
+        reject({ msg: "Wrong Password !" });
+        // console.log("wrong credentials");
+      }
+    } else {
+      reject({ msg: "Email does't match" });
+      // console.log("user not found");
+    }
   });
 }

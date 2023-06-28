@@ -1,44 +1,70 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCount } from "./AuthApi";
+import { LoginUser, RegisterUser } from "./AuthApi";
 
 const initialState = {
-  value: 0,
   status: "idle",
+  user: null,
+  loginstatus: null,
+  error: { email: null, password: null },
 };
 
-export const incrementAsync = createAsyncThunk(
-  "counter/fetchCount",
-  async (amount) => {
-    const response = await fetchCount(amount);
-
+export const RegisterUserAsync = createAsyncThunk(
+  "auth/RegisterUser",
+  async (userdata) => {
+    const response = await RegisterUser(userdata);
+    console.log(response);
     return response.data;
   }
 );
 
-export const counterSlice = createSlice({
-  name: "counter",
-  initialState,
+export const LoginUserAsync = createAsyncThunk(
+  "auth/LoginUser",
+  async (userdata) => {
+    const response = await LoginUser(userdata);
 
-  reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-  },
+    return response;
+  }
+);
+
+export const AuthSlice = createSlice({
+  name: "auth",
+  initialState,
 
   extraReducers: (builder) => {
     builder
-      .addCase(incrementAsync.pending, (state) => {
+      .addCase(RegisterUserAsync.pending, (state) => {
         state.status = "loading";
       })
-      .addCase(incrementAsync.fulfilled, (state, action) => {
+      .addCase(RegisterUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.value += action.payload;
+        state.user += action.payload;
+      })
+      .addCase(LoginUserAsync.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(LoginUserAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.loginstatus = action.payload;
+      })
+      .addCase(LoginUserAsync.rejected, (state, action) => {
+        state.status = "idle";
+        console.log(action.error, "adfsdfsfds");
+        if (action.error.message == "Email does't match") {
+          state.error.email = action.error.message;
+          state.error.password = null;
+        } else if (action.error.message == "Wrong Password !") {
+          state.error.email = null;
+          state.error.password = action.error.message;
+        } else {
+          state.error.email = null;
+          state.error.password = null;
+        }
       });
   },
 });
 
-export const { increment } = counterSlice.actions;
+export const selectUser = (state) => state.auth.status;
+export const LoginStatus = (state) => state.auth.loginstatus;
+export const ErrorFound = (state) => state.auth.error;
 
-export const selectCount = (state) => state.counter;
-
-export default counterSlice.reducer;
+export default AuthSlice.reducer;

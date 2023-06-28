@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { increment, incrementAsync, selectCount } from "./CartSlice";
 
 import { Link } from "react-router-dom";
 
@@ -34,8 +33,6 @@ const products = [
 export default function Cart() {
   const [open, setOpen] = useState(true);
 
-  const count = useSelector(selectCount);
-  const dispatch = useDispatch();
 
   return (
     <div className="bg-white">
