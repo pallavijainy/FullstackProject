@@ -12,7 +12,14 @@ import PrivateRoute from "../PrivateRoute";
 const RouterPage = () => {
   return (
     <Routes>
-      <Route path="/" element={<Home />}></Route>
+      <Route
+        path="/"
+        element={
+          <PrivateRoute>
+            <Home />
+          </PrivateRoute>
+        }
+      ></Route>
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
       <Route

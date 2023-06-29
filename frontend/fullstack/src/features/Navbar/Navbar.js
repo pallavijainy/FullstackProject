@@ -1,8 +1,11 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { cartData, GetCartDatabyUserIdAsync } from "../cart/CartSlice";
+import { selectUser } from "../Auth/AuthSlice";
 
 const user = {
   name: "Tom Cook",
@@ -28,6 +31,8 @@ function classNames(...classes) {
 }
 
 function Navbar({ children }) {
+  const cartItem = useSelector(cartData);
+
   return (
     <>
       <div className="min-h-full">
@@ -77,9 +82,11 @@ function Navbar({ children }) {
                           />
                         </Link>
                       </button>
-                      <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                        3
-                      </span>
+                      {cartItem.length > 0 && (
+                        <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                          {cartItem.length}
+                        </span>
+                      )}
 
                       {/* Profile dropdown */}
                       <Menu as="div" className="relative ml-3">
@@ -190,9 +197,11 @@ function Navbar({ children }) {
                         />
                       </Link>
                     </button>
-                    <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
-                      3
-                    </span>
+                    {cartItem.length > 0 && (
+                      <span className="inline-flex items-center rounded-md mb-7 -ml-3 bg-gray-50 px-2 py-1 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">
+                        {cartItem.length}
+                      </span>
+                    )}
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (

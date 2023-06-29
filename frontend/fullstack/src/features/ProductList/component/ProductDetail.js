@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectedProductbyId } from "../ProductListSlice";
 import { Link, useParams } from "react-router-dom";
 import { fetchProductByIdAsync } from "./../ProductListSlice";
+import { AddedToCartAsync, cartData, StatusAdd } from "../../cart/CartSlice";
+import { selectUser } from "../../Auth/AuthSlice";
 
 const colors = [
   { name: "White", class: "bg-white", selectedClass: "ring-gray-400" },
@@ -36,14 +38,24 @@ function classNames(...classes) {
 export default function ProductDetail() {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
-
+  const user = useSelector(selectUser);
+  console.log(user);
   const product = useSelector(selectedProductbyId);
+  const cartItem = useSelector(cartData);
   const dispatch = useDispatch();
   const params = useParams();
 
   useEffect(() => {
     dispatch(fetchProductByIdAsync(params.id));
   }, [dispatch, params.id]);
+
+  const handleCart = (e) => {
+    e.preventDefault();
+    dispatch(AddedToCartAsync({ ...product, quantity: 1, user: user.id }));
+    if (cartItem) {
+      alert("Added to cart");
+    }
+  };
 
   return (
     <div className="bg-white">
@@ -287,6 +299,7 @@ export default function ProductDetail() {
                 <button
                   type="submit"
                   className="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                  onClick={handleCart}
                 >
                   Add to Cart
                 </button>

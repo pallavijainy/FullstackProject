@@ -3,7 +3,7 @@ import { LoginUser, RegisterUser } from "./AuthApi";
 
 const initialState = {
   status: "idle",
-  user: null,
+  user: [],
   loginstatus: null,
   error: { email: null, password: null },
 };
@@ -21,7 +21,7 @@ export const LoginUserAsync = createAsyncThunk(
   "auth/LoginUser",
   async (userdata) => {
     const response = await LoginUser(userdata);
-
+    console.log(response);
     return response;
   }
 );
@@ -45,6 +45,7 @@ export const AuthSlice = createSlice({
       .addCase(LoginUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.loginstatus = action.payload;
+        state.user = action.payload;
       })
       .addCase(LoginUserAsync.rejected, (state, action) => {
         state.status = "idle";
@@ -63,7 +64,7 @@ export const AuthSlice = createSlice({
   },
 });
 
-export const selectUser = (state) => state.auth.status;
+export const selectUser = (state) => state.auth.user;
 export const LoginStatus = (state) => state.auth.loginstatus;
 export const ErrorFound = (state) => state.auth.error;
 

@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import { selectUser } from "../features/Auth/AuthSlice";
+import { LoginStatus } from "../features/Auth/AuthSlice";
 
 const PrivateRoute = ({ children }) => {
-  const user = useSelector(selectUser);
+  const user = useSelector(LoginStatus);
 
   if (!user) {
     return <Navigate to={"/login"} replace={true} />;

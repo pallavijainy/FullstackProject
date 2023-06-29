@@ -22,7 +22,7 @@ export default function Login() {
   };
   useEffect(() => {
     if (loginstatus) {
-      alert(loginstatus.msg);
+      alert("user logged in successfully");
       navigate("/");
     }
   }, [onSubmit]);

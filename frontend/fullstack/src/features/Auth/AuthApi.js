@@ -24,7 +24,7 @@ export function LoginUser(userdata) {
     if (response.data.length) {
       if (password === response.data[0].password) {
         console.log(response.data[0]);
-        resolve({ msg: "User Logged in successfully" });
+        resolve(response.data[0]);
       } else {
         reject({ msg: "Wrong Password !" });
         // console.log("wrong credentials");
