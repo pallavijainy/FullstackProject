@@ -1,20 +1,30 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
-import { cartData } from "./CartSlice";
+import { cartData, DeleteCartItemAsync, UpdateCartAsync } from "./CartSlice";
 
 export default function Cart() {
   const [open, setOpen] = useState(true);
   const products = useSelector(cartData);
-  console.log(products);
+  console.log(products.length);
+  const dispatch = useDispatch();
 
   const totalAmount = products.reduce(
     (acc, el) => el.price * el.quantity + acc,
     0
   );
+
   const totalItem = products.reduce((acc, el) => el.quantity + acc, 0);
+
+  const handleQnt = (e, product) => {
+    dispatch(UpdateCartAsync({ ...product, quantity: +e.target.value }));
+  };
+
+  const handleRemove = (id) => {
+    dispatch(DeleteCartItemAsync(id));
+  };
 
   return (
     <div className="bg-white">
@@ -56,7 +66,10 @@ export default function Cart() {
                       >
                         Qty
                       </label>
-                      <select>
+                      <select
+                        value={product.quantity}
+                        onChange={(e) => handleQnt(e, product)}
+                      >
                         <option value={"1"}>1</option>
                         <option value={"2"}>2</option>
                         <option value={"3"}>3</option>
@@ -66,6 +79,7 @@ export default function Cart() {
 
                     <div className="flex">
                       <button
+                        onClick={() => handleRemove(product.id)}
                         type="button"
                         className="font-medium text-indigo-600 hover:text-indigo-500"
                       >
