@@ -18,7 +18,13 @@ export default function Login() {
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    dispatch(LoginUserAsync({ email: data.email, password: data.password }));
+    dispatch(
+      LoginUserAsync({
+        email: data.email,
+        password: data.password,
+        
+      })
+    );
   };
   useEffect(() => {
     if (loginstatus) {

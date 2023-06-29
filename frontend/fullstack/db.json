@@ -2223,13 +2223,299 @@
     {
       "email": "eve.holt@reqres.in",
       "password": "Pallavi@123",
-      "id": 8
+      "id": 8,
+      "address": [
+        {
+          "fullname": "Pallavi Jain",
+          "email": "pallavijainy0612@gmail.com",
+          "phone": "09755415107",
+          "street-address": "Old private bus stand shivpuri",
+          "city": "Shivpuri",
+          "region": "Madhya Pradesh",
+          "postal-code": "473551"
+        },
+        {
+          "fullname": "pallavi jain",
+          "email": "pallavijainy0612@gmail.com",
+          "phone": "09755415107",
+          "street-address": "",
+          "city": "Shivpuri",
+          "region": "Shivpuri",
+          "postal-code": "",
+          "street": "fw20_0577",
+          "postal": "473551"
+        },
+        {
+          "fullname": "Akash roy",
+          "email": "pallavijainy0612@gmail.com",
+          "phone": "09755415107",
+          "street": "Old private bus stand shivpuri",
+          "city": "Shivpuri",
+          "region": "Madhya Pradesh",
+          "postal": "473551"
+        },
+        {
+          "fullname": "vini",
+          "email": "pallavijainy0612@gmail.com",
+          "phone": "09755415107",
+          "street": "fw20_0577",
+          "city": "Shivpuri",
+          "region": "Shivpuri",
+          "postal": "473551"
+        }
+      ]
     },
     {
       "email": "komal@gmail.com",
       "password": "Komal@123",
-      "id": 9
+      "id": 9,
+      "address": []
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "title": "Huawei P30",
+      "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+      "price": 499,
+      "discountPercentage": 10.58,
+      "rating": 4.09,
+      "stock": 32,
+      "brand": "Huawei",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/5/1.jpg",
+        "https://i.dummyjson.com/data/products/5/2.jpg",
+        "https://i.dummyjson.com/data/products/5/3.jpg"
+      ],
+      "quantity": 1,
+      "user": 8,
+      "productId": 5,
+      "id": 6
+    },
+    {
+      "title": "Eau De Perfume Spray",
+      "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+      "price": 30,
+      "discountPercentage": 10.99,
+      "rating": 4.7,
+      "stock": 105,
+      "brand": "Lord - Al-Rehab",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/15/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/15/1.jpg",
+        "https://i.dummyjson.com/data/products/15/2.jpg",
+        "https://i.dummyjson.com/data/products/15/3.jpg",
+        "https://i.dummyjson.com/data/products/15/4.jpg",
+        "https://i.dummyjson.com/data/products/15/thumbnail.jpg"
+      ],
+      "quantity": 1,
+      "user": 8,
+      "productId": 15,
+      "id": 7
+    },
+    {
+      "title": "MacBook Pro",
+      "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+      "price": 1749,
+      "discountPercentage": 11.02,
+      "rating": 4.57,
+      "stock": 83,
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/2.jpg",
+        "https://i.dummyjson.com/data/products/6/3.png",
+        "https://i.dummyjson.com/data/products/6/4.jpg"
+      ],
+      "quantity": 1,
+      "user": 8,
+      "productId": 6,
+      "id": 10
+    },
+    {
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ],
+      "quantity": 1,
+      "user": 8,
+      "productId": 3,
+      "id": 11
+    },
+    {
+      "title": "Samsung Universe 9",
+      "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+      "price": 1249,
+      "discountPercentage": 15.46,
+      "rating": 4.09,
+      "stock": 36,
+      "brand": "Samsung",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ],
+      "quantity": 1,
+      "user": 9,
+      "productId": 3,
+      "id": 12
+    }
+  ],
+  "orders": [
+    {
+      "products": [
+        {
+          "title": "Huawei P30",
+          "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+          "price": 499,
+          "discountPercentage": 10.58,
+          "rating": 4.09,
+          "stock": 32,
+          "brand": "Huawei",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/5/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/5/1.jpg",
+            "https://i.dummyjson.com/data/products/5/2.jpg",
+            "https://i.dummyjson.com/data/products/5/3.jpg"
+          ],
+          "quantity": 1,
+          "user": 8,
+          "productId": 5,
+          "id": 6
+        },
+        {
+          "title": "Eau De Perfume Spray",
+          "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+          "price": 30,
+          "discountPercentage": 10.99,
+          "rating": 4.7,
+          "stock": 105,
+          "brand": "Lord - Al-Rehab",
+          "category": "fragrances",
+          "thumbnail": "https://i.dummyjson.com/data/products/15/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/15/1.jpg",
+            "https://i.dummyjson.com/data/products/15/2.jpg",
+            "https://i.dummyjson.com/data/products/15/3.jpg",
+            "https://i.dummyjson.com/data/products/15/4.jpg",
+            "https://i.dummyjson.com/data/products/15/thumbnail.jpg"
+          ],
+          "quantity": 1,
+          "user": 8,
+          "productId": 15,
+          "id": 7
+        },
+        {
+          "title": "MacBook Pro",
+          "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+          "price": 1749,
+          "discountPercentage": 11.02,
+          "rating": 4.57,
+          "stock": 83,
+          "brand": "Apple",
+          "category": "laptops",
+          "thumbnail": "https://i.dummyjson.com/data/products/6/thumbnail.png",
+          "images": [
+            "https://i.dummyjson.com/data/products/6/1.png",
+            "https://i.dummyjson.com/data/products/6/2.jpg",
+            "https://i.dummyjson.com/data/products/6/3.png",
+            "https://i.dummyjson.com/data/products/6/4.jpg"
+          ],
+          "quantity": 1,
+          "user": 8,
+          "productId": 6,
+          "id": 10
+        },
+        {
+          "title": "Samsung Universe 9",
+          "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+          "price": 1249,
+          "discountPercentage": 15.46,
+          "rating": 4.09,
+          "stock": 36,
+          "brand": "Samsung",
+          "category": "smartphones",
+          "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
+          "quantity": 1,
+          "user": 8,
+          "productId": 3,
+          "id": 11
+        }
+      ],
+      "totalAmount": 3527,
+      "totalItem": 4,
+      "isAddress": {
+        "fullname": "vini",
+        "email": "pallavijainy0612@gmail.com",
+        "phone": "09755415107",
+        "street": "fw20_0577",
+        "city": "Shivpuri",
+        "region": "Shivpuri",
+        "postal": "473551"
+      },
+      "paymentMethod": "card",
+      "user": {
+        "email": "eve.holt@reqres.in",
+        "password": "Pallavi@123",
+        "id": 8,
+        "address": [
+          {
+            "fullname": "Pallavi Jain",
+            "email": "pallavijainy0612@gmail.com",
+            "phone": "09755415107",
+            "street-address": "Old private bus stand shivpuri",
+            "city": "Shivpuri",
+            "region": "Madhya Pradesh",
+            "postal-code": "473551"
+          },
+          {
+            "fullname": "pallavi jain",
+            "email": "pallavijainy0612@gmail.com",
+            "phone": "09755415107",
+            "street-address": "",
+            "city": "Shivpuri",
+            "region": "Shivpuri",
+            "postal-code": "",
+            "street": "fw20_0577",
+            "postal": "473551"
+          },
+          {
+            "fullname": "Akash roy",
+            "email": "pallavijainy0612@gmail.com",
+            "phone": "09755415107",
+            "street": "Old private bus stand shivpuri",
+            "city": "Shivpuri",
+            "region": "Madhya Pradesh",
+            "postal": "473551"
+          },
+          {
+            "fullname": "vini",
+            "email": "pallavijainy0612@gmail.com",
+            "phone": "09755415107",
+            "street": "fw20_0577",
+            "city": "Shivpuri",
+            "region": "Shivpuri",
+            "postal": "473551"
+          }
+        ]
+      },
+      "id": 1
+    }
+  ]
 }

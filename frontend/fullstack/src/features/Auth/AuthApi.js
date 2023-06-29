@@ -35,3 +35,15 @@ export function LoginUser(userdata) {
     }
   });
 }
+
+//update User
+export function UpdateUser(update) {
+  return new Promise(async (resolve) => {
+    const response = await axios.patch(
+      `http://localhost:8080/users/${update.id}`,
+      update
+    );
+    console.log(response.data);
+    resolve(response.data);
+  });
+}

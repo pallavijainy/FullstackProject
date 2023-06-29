@@ -17,7 +17,13 @@ export default function Singup() {
   const dispatch = useDispatch();
   const onSubmit = (data) => {
     console.log(data);
-    dispatch(RegisterUserAsync({ email: data.email, password: data.password }));
+    dispatch(
+      RegisterUserAsync({
+        email: data.email,
+        password: data.password,
+        address: [],
+      })
+    );
   };
   return (
     <div>

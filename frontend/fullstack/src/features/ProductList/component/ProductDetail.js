@@ -40,8 +40,8 @@ export default function ProductDetail() {
   const [selectedSize, setSelectedSize] = useState(sizes[2]);
   const user = useSelector(selectUser);
   console.log(user);
-  const product = useSelector(selectedProductbyId);
-  const cartItem = useSelector(cartData);
+  const product = useSelector(selectedProductbyId); // items available
+  const cartItem = useSelector(cartData); //cart m h jo
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -51,8 +51,25 @@ export default function ProductDetail() {
 
   const handleCart = (e) => {
     e.preventDefault();
-    dispatch(AddedToCartAsync({ ...product, quantity: 1, user: user.id }));
-    if (cartItem) {
+
+    const newItem = {
+      ...product,
+      quantity: 1,
+      user: user.id,
+      productId: product.id,
+    };
+    delete newItem["id"];
+
+    let flag = true;
+
+    cartItem.forEach((el) => {
+      if (el.productId === product.id) {
+        flag = false;
+        alert("Item is already added");
+      }
+    });
+    if (flag) {
+      dispatch(AddedToCartAsync(newItem));
       alert("Added to cart");
     }
   };

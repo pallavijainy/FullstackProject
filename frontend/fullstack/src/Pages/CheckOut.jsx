@@ -1,70 +1,93 @@
 import React, { useState } from "react";
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
-import { Link } from "react-router-dom";
-const products = [
-  {
-    id: 1,
-    name: "Throwback Hip Bag",
-    href: "#",
-    color: "Salmon",
-    price: "$90.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg",
-    imageAlt:
-      "Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.",
-  },
-  {
-    id: 2,
-    name: "Medium Stuff Satchel",
-    href: "#",
-    color: "Blue",
-    price: "$32.00",
-    quantity: 1,
-    imageSrc:
-      "https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg",
-    imageAlt:
-      "Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.",
-  },
-  // More products...
-];
 
-const address = [
-  {
-    id: 1,
-    name: "Leslie Alexander",
-    street: "11 gali",
-    city: "patna",
-    pincode: "464093",
-    state: "GOA",
-    phone: "34545345345",
-  },
-  {
-    id: 2,
-    name: "pallavi",
-    street: "12 gali",
-    city: "shivpuri",
-    pincode: "34324",
-    state: "ANDRA PRADESH",
-    phone: "4354353454",
-  },
-  {
-    id: 3,
-    name: "Akash",
-    street: "13 gali",
-    city: "bihar",
-    pincode: "342324",
-    state: "MP",
-    phone: "4444444444534",
-  },
-];
+import CartPage from "./CartPage";
+import { useForm } from "react-hook-form";
+import { useSelector } from "react-redux";
+import { selectUser } from "../features/Auth/AuthSlice";
+import { useDispatch } from "react-redux";
+import { UpdateUserAsync } from "./../features/Auth/AuthSlice";
+import Cart from "../features/cart/Cart";
+import {
+  cartData,
+  DeleteCartItemAsync,
+  UpdateCartAsync,
+} from "../features/cart/CartSlice";
+import { Link } from "react-router-dom";
+import { OrderAddedAsync } from "../features/Order/OrderSlice";
+
 const CheckOut = () => {
+  const [isAddress, setIsAddress] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState("cash");
+  const user = useSelector(selectUser);
+  console.log(user);
   const [open, setOpen] = useState(true);
+  const products = useSelector(cartData);
+
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    console.log(data);
+    dispatch(UpdateUserAsync({ ...user, address: [...user.address, data] }));
+    reset();
+  };
+
+  const handleAddress = (e) => {
+    // console.log(user.address[e.target.value]);
+    setIsAddress(user.address[e.target.value]);
+  };
+
+  const handlePayment = (e) => {
+    // console.log(e.target.value);
+    setPaymentMethod(e.target.value);
+  };
+
+  //cartpage
+
+  const totalAmount = products.reduce(
+    (acc, el) => el.price * el.quantity + acc,
+    0
+  );
+
+  const totalItem = products.reduce((acc, el) => el.quantity + acc, 0);
+
+  const handleQnt = (e, product) => {
+    dispatch(UpdateCartAsync({ ...product, quantity: +e.target.value }));
+  };
+
+  const handleRemove = (id) => {
+    dispatch(DeleteCartItemAsync(id));
+  };
+  //
+
+  //addorder
+  const handleOrder = () => {
+    let order = {
+      products,
+      totalAmount,
+      totalItem,
+      isAddress,
+      paymentMethod,
+      user,
+    };
+    dispatch(OrderAddedAsync(order));
+  };
+  //
+
   return (
     <div>
       <div className="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-5">
         <div className="lg:col-span-3">
-          <form className="bg-white px-5 py-5">
+          <form
+            noValidate
+            className="bg-white px-5 py-5"
+            onSubmit={handleSubmit(onSubmit)}
+          >
             <div className="space-y-12">
               <div className="border-b border-gray-900/10 pb-12 px-5">
                 <h2 className="text-2xl font-semibold leading-7 text-gray-900">
@@ -77,35 +100,18 @@ const CheckOut = () => {
                 <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="first-name"
+                      htmlFor="fullname"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      First name
+                      Full name
                     </label>
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="first-name"
-                        id="first-name"
-                        autoComplete="given-name"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="sm:col-span-3">
-                    <label
-                      htmlFor="last-name"
-                      className="block text-sm font-medium leading-6 text-gray-900"
-                    >
-                      Last name
-                    </label>
-                    <div className="mt-2">
-                      <input
-                        type="text"
-                        name="last-name"
-                        id="last-name"
-                        autoComplete="family-name"
+                        {...register("fullname", {
+                          required: "Full Name is required",
+                        })}
+                        id="fullname"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -121,9 +127,10 @@ const CheckOut = () => {
                     <div className="mt-2">
                       <input
                         id="email"
-                        name="email"
+                        {...register("email", {
+                          required: "Email is required",
+                        })}
                         type="email"
-                        autoComplete="email"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -131,28 +138,26 @@ const CheckOut = () => {
 
                   <div className="sm:col-span-3">
                     <label
-                      htmlFor="country"
+                      htmlFor="phone"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
-                      Country
+                      Phone
                     </label>
                     <div className="mt-2">
-                      <select
-                        id="country"
-                        name="country"
-                        autoComplete="country-name"
-                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
-                      >
-                        <option>United States</option>
-                        <option>Canada</option>
-                        <option>Mexico</option>
-                      </select>
+                      <input
+                        id="phone"
+                        {...register("phone", {
+                          required: "Phone No. is required",
+                        })}
+                        type="tel"
+                        className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      />
                     </div>
                   </div>
 
                   <div className="col-span-full">
                     <label
-                      htmlFor="street-address"
+                      htmlFor="street"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       Street address
@@ -160,9 +165,10 @@ const CheckOut = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="street-address"
-                        id="street-address"
-                        autoComplete="street-address"
+                        {...register("street", {
+                          required: "street-address is required",
+                        })}
+                        id="street"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -178,9 +184,8 @@ const CheckOut = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="city"
+                        {...register("city", { required: "City is required" })}
                         id="city"
-                        autoComplete="address-level2"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -196,9 +201,10 @@ const CheckOut = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="region"
+                        {...register("region", {
+                          required: "Region is required",
+                        })}
                         id="region"
-                        autoComplete="address-level1"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -206,7 +212,7 @@ const CheckOut = () => {
 
                   <div className="sm:col-span-2">
                     <label
-                      htmlFor="postal-code"
+                      htmlFor="postal"
                       className="block text-sm font-medium leading-6 text-gray-900"
                     >
                       ZIP / Postal code
@@ -214,9 +220,10 @@ const CheckOut = () => {
                     <div className="mt-2">
                       <input
                         type="text"
-                        name="postal-code"
-                        id="postal-code"
-                        autoComplete="postal-code"
+                        {...register("postal", {
+                          required: "Postal-code is required",
+                        })}
+                        id="postal"
                         className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                       />
                     </div>
@@ -225,6 +232,7 @@ const CheckOut = () => {
               </div>
               <div className="mt-6 flex items-center justify-end gap-x-6">
                 <button
+                  onClick={() => reset()}
                   type="button"
                   className="text-sm font-semibold leading-6 text-gray-900"
                 >
@@ -246,7 +254,7 @@ const CheckOut = () => {
                 </p>
 
                 <ul role="list">
-                  {address.map((el) => (
+                  {user.address.map((el, index) => (
                     <li
                       key={el.id}
                       className="flex justify-between gap-x-6 py-5 border-solid border-2 border-gray-200 px-5"
@@ -256,17 +264,22 @@ const CheckOut = () => {
                           id="address"
                           name="address"
                           type="radio"
+                          onChange={(e) => handleAddress(e)}
+                          value={index}
                           className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                         <div className="min-w-0 flex-auto">
                           <p className="text-sm font-semibold leading-6 text-gray-900">
-                            {el.name}
+                            {el.fullname}
                           </p>
                           <p className="mt-1 truncate text-xs leading-5 text-gray-500">
                             {el.street}
                           </p>
                           <p className="text-sm leading-6 text-gray-900">
                             {el.city}
+                          </p>
+                          <p className="text-sm leading-6 text-gray-900">
+                            {el.region}
                           </p>
                         </div>
                       </div>
@@ -277,7 +290,7 @@ const CheckOut = () => {
                           </p>
                         </div>
                         <p className="text-xs leading-5 text-gray-500">
-                          {el.pincode}
+                          {el.postal}
                         </p>
                       </div>
                     </li>
@@ -297,6 +310,9 @@ const CheckOut = () => {
                           id="cash"
                           name="payment"
                           type="radio"
+                          onChange={(e) => handlePayment(e)}
+                          value={"cash"}
+                          checked={paymentMethod === "cash"}
                           className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                         <label
@@ -311,6 +327,9 @@ const CheckOut = () => {
                           id="card-payment"
                           name="payment"
                           type="radio"
+                          onChange={(e) => handlePayment(e)}
+                          value={"card"}
+                          checked={paymentMethod === "card"}
                           className="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                         <label
@@ -327,6 +346,7 @@ const CheckOut = () => {
             </div>
           </form>
         </div>
+        {/* //cart */}
         <div className="lg:col-span-2">
           <div className="bg-white">
             <h1 className="text-3xl font-bold tracking-tight text-gray-900 pt-3 pl-5">
@@ -339,8 +359,8 @@ const CheckOut = () => {
                     <li key={product.id} className="flex py-6">
                       <div className="h-24 w-24 flex-shrink-0 overflow-hidden rounded-md border border-gray-200">
                         <img
-                          src={product.imageSrc}
-                          alt={product.imageAlt}
+                          src={product.images[0]}
+                          alt={product.title}
                           className="h-full w-full object-cover object-center"
                         />
                       </div>
@@ -349,12 +369,14 @@ const CheckOut = () => {
                         <div>
                           <div className="flex justify-between text-base font-medium text-gray-900">
                             <h3>
-                              <a href={product.href}>{product.name}</a>
+                              <Link to={`/productdetail/${product.id}`}>
+                                {product.title}
+                              </Link>
                             </h3>
                             <p className="ml-4">{product.price}</p>
                           </div>
                           <p className="mt-1 text-sm text-gray-500">
-                            {product.color}
+                            {product.brand}
                           </p>
                         </div>
                         <div className="flex flex-1 items-end justify-between text-sm">
@@ -365,7 +387,10 @@ const CheckOut = () => {
                             >
                               Qty
                             </label>
-                            <select>
+                            <select
+                              value={product.quantity}
+                              onChange={(e) => handleQnt(e, product)}
+                            >
                               <option value={"1"}>1</option>
                               <option value={"2"}>2</option>
                               <option value={"3"}>3</option>
@@ -375,6 +400,7 @@ const CheckOut = () => {
 
                           <div className="flex">
                             <button
+                              onClick={() => handleRemove(product.id)}
                               type="button"
                               className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
@@ -392,18 +418,21 @@ const CheckOut = () => {
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
               <div className="flex justify-between text-base font-medium text-gray-900">
                 <p>Subtotal</p>
-                <p>$262.00</p>
+                <p>${totalAmount}</p>
+              </div>
+
+              <div className="flex justify-between text-base font-medium text-gray-900">
+                <p>Total Items in Cart</p>
+                <p>{totalItem} items</p>
               </div>
               <p className="mt-0.5 text-sm text-gray-500">
                 Shipping and taxes calculated at checkout.
               </p>
-              <div className="mt-6">
-                <Link
-                  to="/pay"
-                  className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
-                >
-                  Pay Now
-                </Link>
+              <div
+                onClick={handleOrder}
+                className="flex cursor-pointer items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+              >
+                Order now
               </div>
               <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                 <p>
