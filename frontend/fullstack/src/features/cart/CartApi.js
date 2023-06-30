@@ -37,8 +37,27 @@ export function UpdateCart(update) {
 //delete cart item
 export function DeleteCartItem(id) {
   return new Promise(async (resolve) => {
-    const response = await axios.delete(`http://localhost:8080/cart/${id}`);
-    console.log(response.data);
-    resolve(response.data);
+    await axios
+      .delete(`http://localhost:8080/cart/${id}`)
+      .then((response) => {
+        resolve(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // console.log(response.data);
+  });
+}
+
+//reset cart
+export function ResetCart(userid) {
+  return new Promise(async (resolve) => {
+    const response = await GetCartDatabyUserId(userid);
+    console.log(response);
+
+    for (let item of response) {
+      await DeleteCartItem(item.id);
+    }
+    resolve({ status: "success" });
   });
 }

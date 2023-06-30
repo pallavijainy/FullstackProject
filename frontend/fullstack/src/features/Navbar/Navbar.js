@@ -1,11 +1,10 @@
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { ShoppingCartIcon } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { cartData, GetCartDatabyUserIdAsync } from "../cart/CartSlice";
-import { selectUser } from "../Auth/AuthSlice";
+import { useSelector } from "react-redux";
+import { cartData } from "../cart/CartSlice";
 
 const user = {
   name: "Tom Cook",
@@ -21,9 +20,10 @@ const navigation = [
   { name: "Signup", to: "/signup", current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", to: "/" },
-  { name: "Settings", to: "/" },
-  { name: "Sign out", to: "/" },
+  { name: "Your Profile", to: "/profile" },
+  { name: "My Order", to: "/myorder" },
+  { name: "Settings", to: "/setting" },
+  { name: "Sign out", to: "/login" },
 ];
 
 function classNames(...classes) {
@@ -113,7 +113,7 @@ function Navbar({ children }) {
                             {userNavigation.map((item) => (
                               <Menu.Item key={item.name}>
                                 {({ active }) => (
-                                  <a
+                                  <Link
                                     to={item.to}
                                     className={classNames(
                                       active ? "bg-gray-100" : "",
@@ -121,7 +121,7 @@ function Navbar({ children }) {
                                     )}
                                   >
                                     {item.name}
-                                  </a>
+                                  </Link>
                                 )}
                               </Menu.Item>
                             ))}
@@ -205,14 +205,15 @@ function Navbar({ children }) {
                   </div>
                   <div className="mt-3 space-y-1 px-2">
                     {userNavigation.map((item) => (
-                      <Disclosure.Button
-                        key={item.name}
-                        as="a"
-                        to={item.to}
-                        className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
-                      >
-                        {item.name}
-                      </Disclosure.Button>
+                      <Link to={item.to}>
+                        <Disclosure.Button
+                          key={item.name}
+                          as="a"
+                          className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                        >
+                          {item.name}
+                        </Disclosure.Button>
+                      </Link>
                     ))}
                   </div>
                 </div>

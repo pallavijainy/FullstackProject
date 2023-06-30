@@ -8,6 +8,10 @@ import CheckOut from "./../CheckOut";
 import PayNow from "../PayNow";
 import ProductDetailPage from "../ProductDetailPage";
 import PrivateRoute from "../PrivateRoute";
+import PageNotFound from "../PageNotFound";
+import OrderSuccess from "./OrderSuccess";
+import UserOrdersPage from "../UserOrdersPage";
+import MyProfilePage from "../MyProfilePage";
 
 const RouterPage = () => {
   return (
@@ -32,7 +36,11 @@ const RouterPage = () => {
       ></Route>
       <Route path="/checkout" element={<CheckOut />}></Route>
       <Route path="/pay" element={<PayNow />}></Route>
+      <Route path="/myorder" element={<UserOrdersPage />}></Route>
+      <Route path="/profile" element={<MyProfilePage />}></Route>
       <Route path="/productdetail/:id" element={<ProductDetailPage />}></Route>
+      <Route path="/ordersuccess/:id" element={<OrderSuccess />}></Route>
+      <Route path="*" element={<PageNotFound />}></Route>
     </Routes>
   );
 };

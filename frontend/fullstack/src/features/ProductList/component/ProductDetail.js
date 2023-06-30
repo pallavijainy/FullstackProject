@@ -60,17 +60,15 @@ export default function ProductDetail() {
     };
     delete newItem["id"];
 
-    let flag = true;
+    //
+    const filter = cartItem.filter((el) => el.productId == product.id);
+    console.log("Filter", filter);
 
-    cartItem.forEach((el) => {
-      if (el.productId === product.id) {
-        flag = false;
-        alert("Item is already added");
-      }
-    });
-    if (flag) {
+    if (filter.length == 0) {
       dispatch(AddedToCartAsync(newItem));
-      alert("Added to cart");
+      alert(" added To cart");
+    } else {
+      alert("Item is already added");
     }
   };
 
