@@ -8,7 +8,7 @@ import { LoginStatus, LoginUserAsync, selectUser } from "../AuthSlice";
 export default function Login() {
   const user = useSelector(selectUser);
   const loginstatus = useSelector(LoginStatus);
-  console.log(loginstatus);
+  // console.log(loginstatus);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -22,7 +22,6 @@ export default function Login() {
       LoginUserAsync({
         email: data.email,
         password: data.password,
-        
       })
     );
   };

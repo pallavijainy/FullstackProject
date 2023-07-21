@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { LoginUser, RegisterUser, UpdateUser } from "./AuthApi";
+
+import { LoginUser, RegisterUser } from "./AuthApi";
 
 const initialState = {
   status: "idle",
-  user: [],
+  user: null,
   loginstatus: null,
   error: { email: null, password: null },
 };
@@ -26,15 +27,15 @@ export const LoginUserAsync = createAsyncThunk(
   }
 );
 
-//update user
-export const UpdateUserAsync = createAsyncThunk(
-  "auth/UpdateUser",
-  async (update) => {
-    const response = await UpdateUser(update);
-    console.log(response);
-    return response;
-  }
-);
+// //update user
+// export const UpdateUserAsync = createAsyncThunk(
+//   "auth/UpdateUser",
+//   async (update) => {
+//     const response = await UpdateUser(update);
+//     console.log(response);
+//     return response;
+//   }
+// );
 
 export const AuthSlice = createSlice({
   name: "auth",
@@ -47,7 +48,7 @@ export const AuthSlice = createSlice({
       })
       .addCase(RegisterUserAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.user += action.payload;
+        state.user = action.payload;
       })
       .addCase(LoginUserAsync.pending, (state) => {
         state.status = "loading";
@@ -60,25 +61,25 @@ export const AuthSlice = createSlice({
       .addCase(LoginUserAsync.rejected, (state, action) => {
         state.status = "idle";
         console.log(action.error, "adfsdfsfds");
-        if (action.error.message == "Email does't match") {
+        if (action.error.message === "Email does't match") {
           state.error.email = action.error.message;
           state.error.password = null;
-        } else if (action.error.message == "Wrong Password !") {
+        } else if (action.error.message === "Wrong Password !") {
           state.error.email = null;
           state.error.password = action.error.message;
         } else {
           state.error.email = null;
           state.error.password = null;
         }
-      })
-      .addCase(UpdateUserAsync.pending, (state) => {
-        state.status = "loading";
-      })
-      .addCase(UpdateUserAsync.fulfilled, (state, action) => {
-        state.status = "idle";
-
-        state.user = action.payload;
       });
+    // .addCase(UpdateUserAsync.pending, (state) => {
+    //   state.status = "loading";
+    // })
+    // .addCase(UpdateUserAsync.fulfilled, (state, action) => {
+    //   state.status = "idle";
+
+    //   state.user = action.payload;
+    // });
   },
 });
 

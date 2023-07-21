@@ -2,9 +2,8 @@ import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 import { useSelector } from "react-redux";
-import { selectUser } from "../features/Auth/AuthSlice";
+
 import { useDispatch } from "react-redux";
-import { UpdateUserAsync } from "./../features/Auth/AuthSlice";
 
 import {
   cartData,
@@ -13,11 +12,15 @@ import {
 } from "../features/cart/CartSlice";
 import { Link, Navigate } from "react-router-dom";
 import { OrderAddedAsync, orderstatus } from "../features/Order/OrderSlice";
+import {
+  selectUserInfo,
+  UpdateUserAsync,
+} from "./../features/userProfile/UserProfileSlice";
 
 const CheckOut = () => {
   const [isAddress, setIsAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState("cash");
-  const user = useSelector(selectUser);
+  const user = useSelector(selectUserInfo);
   console.log(user);
   const [open, setOpen] = useState(true);
   const products = useSelector(cartData);

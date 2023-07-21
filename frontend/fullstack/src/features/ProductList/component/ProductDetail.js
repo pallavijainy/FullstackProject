@@ -201,9 +201,9 @@ export default function ProductDetail() {
                       Choose a color
                     </RadioGroup.Label>
                     <div className="flex items-center space-x-3">
-                      {colors.map((color) => (
+                      {colors.map((color, index) => (
                         <RadioGroup.Option
-                          key={color.name}
+                          key={index}
                           value={color}
                           className={({ active, checked }) =>
                             classNames(
@@ -251,9 +251,9 @@ export default function ProductDetail() {
                       Choose a size
                     </RadioGroup.Label>
                     <div className="grid grid-cols-4 gap-4 sm:grid-cols-8 lg:grid-cols-4">
-                      {sizes.map((size) => (
+                      {sizes.map((size, index) => (
                         <RadioGroup.Option
-                          key={size.name}
+                          key={index}
                           value={size}
                           disabled={!size.inStock}
                           className={({ active }) =>
@@ -340,8 +340,8 @@ export default function ProductDetail() {
 
                 <div className="mt-4">
                   <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
-                    {highlights.map((highlight) => (
-                      <li key={highlight} className="text-gray-400">
+                    {highlights.map((highlight, index) => (
+                      <li key={index} className="text-gray-400">
                         <span className="text-gray-600">{highlight}</span>
                       </li>
                     ))}
