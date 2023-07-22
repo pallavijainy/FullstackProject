@@ -35,3 +35,10 @@ export function LoginUser(userdata) {
     }
   });
 }
+
+//logout
+export function LogOut(userid) {
+  return new Promise(async (resolve, reject) => {
+    resolve({ data: "success" });
+  });
+}

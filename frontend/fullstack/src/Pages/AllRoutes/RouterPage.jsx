@@ -13,6 +13,8 @@ import OrderSuccess from "./OrderSuccess";
 import UserOrdersPage from "../UserOrdersPage";
 import MyProfilePage from "../MyProfilePage";
 
+import LogOutPage from "../LogOutPage";
+
 const RouterPage = () => {
   return (
     <Routes>
@@ -25,6 +27,7 @@ const RouterPage = () => {
         }
       ></Route>
       <Route path="/login" element={<LoginPage />}></Route>
+      <Route path="/logout" element={<LogOutPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
       <Route
         path="/cart"
