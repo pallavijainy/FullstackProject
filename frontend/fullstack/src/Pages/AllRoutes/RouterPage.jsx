@@ -14,6 +14,7 @@ import UserOrdersPage from "../UserOrdersPage";
 import MyProfilePage from "../MyProfilePage";
 
 import LogOutPage from "../LogOutPage";
+import ForgotPasswordPage from "../ForgotPasswordPage";
 
 const RouterPage = () => {
   return (
@@ -29,6 +30,7 @@ const RouterPage = () => {
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/logout" element={<LogOutPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
+      <Route path="/forgot" element={<ForgotPasswordPage />}></Route>
       <Route
         path="/cart"
         element={
