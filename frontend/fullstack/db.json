@@ -48,9 +48,7 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
-      ]
+      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
     },
     {
       "id": 4,
@@ -1428,9 +1426,7 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
-      ]
+      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
     },
     {
       "id": 79,
@@ -1443,9 +1439,7 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/79/1.jpg"
-      ]
+      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
     },
     {
       "id": 80,
@@ -2270,18 +2264,21 @@
           "region": "Madhya Pradesh",
           "postal": "473551"
         }
-      ]
+      ],
+      "role": "user"
     },
     {
       "email": "komal@gmail.com",
       "password": "Komal@123",
       "id": 9,
-      "address": []
+      "address": [],
+      "role": "admin"
     },
     {
       "email": "Pallavijainy0612@gmail.com",
       "password": "Pallavi@123",
       "address": [],
+      "role": "user",
       "id": 10
     }
   ],
@@ -2296,9 +2293,7 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": [
-        "https://i.dummyjson.com/data/products/3/1.jpg"
-      ],
+      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
       "quantity": 1,
       "user": 8,
       "productId": 3,
@@ -2318,9 +2313,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 9,
           "productId": 3,
@@ -2531,9 +2524,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -2838,9 +2829,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4099,9 +4088,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4224,9 +4211,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4327,9 +4312,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4918,9 +4901,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4992,9 +4973,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -5062,9 +5041,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -5114,9 +5091,7 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": [
-            "https://i.dummyjson.com/data/products/3/1.jpg"
-          ],
+          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
           "quantity": 1,
           "user": 8,
           "productId": 3,

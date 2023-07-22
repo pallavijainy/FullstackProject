@@ -15,7 +15,8 @@ import MyProfilePage from "../MyProfilePage";
 
 import LogOutPage from "../LogOutPage";
 import ForgotPasswordPage from "../ForgotPasswordPage";
-
+import AdminDashboard from "../AdminDashboard";
+import AdminPrivateRoute from "../AdminPrivateRoute";
 const RouterPage = () => {
   return (
     <Routes>
@@ -30,6 +31,14 @@ const RouterPage = () => {
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/logout" element={<LogOutPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
+      <Route
+        path="/admin"
+        element={
+          <AdminPrivateRoute>
+            <AdminDashboard />
+          </AdminPrivateRoute>
+        }
+      ></Route>
       <Route path="/forgot" element={<ForgotPasswordPage />}></Route>
       <Route
         path="/cart"
