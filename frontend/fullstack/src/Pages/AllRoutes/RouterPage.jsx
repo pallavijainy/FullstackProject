@@ -17,6 +17,7 @@ import LogOutPage from "../LogOutPage";
 import ForgotPasswordPage from "../ForgotPasswordPage";
 import AdminDashboard from "../AdminDashboard";
 import AdminPrivateRoute from "../AdminPrivateRoute";
+import AddNewProductPage from "./../AddNewProductPage";
 const RouterPage = () => {
   return (
     <Routes>
@@ -31,6 +32,7 @@ const RouterPage = () => {
       <Route path="/login" element={<LoginPage />}></Route>
       <Route path="/logout" element={<LogOutPage />}></Route>
       <Route path="/signup" element={<SignupPage />}></Route>
+      <Route path="/addnewproduct" element={<AddNewProductPage />}></Route>
       <Route
         path="/admin"
         element={
