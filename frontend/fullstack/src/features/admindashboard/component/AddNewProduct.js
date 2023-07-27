@@ -1,26 +1,46 @@
-import { PhotoIcon, UserCircleIcon } from "@heroicons/react/24/solid";
+import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  AddNewProAsync,
+  AllBrand,
+  AllCategory,
+} from "../../ProductList/ProductListSlice";
+
 export default function AddNewProduct() {
-  // "id": 1,
-  // "title": "iPhone 9",
-  // "description": "An apple mobile which is nothing like apple",
-  // "price": 549,
-  // "discountPercentage": 12.96,
-  // "rating": 4.69,
-  // "stock": 94,
-  // "brand": "Apple",
-  // "category": "smartphones",
-  // "thumbnail": "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-  // "images": [
-  //   "https://i.dummyjson.com/data/products/1/1.jpg",
-  //   "https://i.dummyjson.com/data/products/1/2.jpg",
-  //   "https://i.dummyjson.com/data/products/1/3.jpg",
-  //   "https://i.dummyjson.com/data/products/1/4.jpg",
-  //   "https://i.dummyjson.com/data/products/1/thumbnail.jpg"
-  // ]
+  const category = useSelector(AllCategory);
+  const brand = useSelector(AllBrand);
+
+  const dispatch = useDispatch();
+  const {
+    register,
+    handleSubmit,
+
+    formState: { errors },
+  } = useForm();
+
+  const onSubmit = (data) => {
+    const newproductdata = { ...data };
+    newproductdata.images = [
+      newproductdata.image1,
+      newproductdata.image2,
+      newproductdata.image3,
+      newproductdata.image4,
+      newproductdata.thumbnail,
+    ];
+    newproductdata.rating = 0;
+    delete newproductdata["image1"];
+    delete newproductdata["image2"];
+    delete newproductdata["image3"];
+    delete newproductdata["image4"];
+    console.log(newproductdata);
+    dispatch(AddNewProAsync(newproductdata));
+    console.log(data, "done");
+  };
   return (
     <>
-      <form>
-        <div className="space-y-12">
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="space-y-12 p-12 bg-white">
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
               Add New Product
@@ -45,7 +65,8 @@ export default function AddNewProduct() {
                       id="title"
                       autoComplete="title"
                       className="block flex-1 border-0 bg-transparent py-1.5 pl-1 text-gray-900 placeholder:text-gray-400 focus:ring-0 sm:text-sm sm:leading-6"
-                      placeholder="janesmith"
+                      placeholder="Product Name"
+                      {...register("title")}
                     />
                   </div>
                 </div>
@@ -65,6 +86,7 @@ export default function AddNewProduct() {
                     rows={3}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                     defaultValue={""}
+                    {...register("description")}
                   />
                 </div>
               </div>
@@ -73,34 +95,33 @@ export default function AddNewProduct() {
 
           <div className="border-b border-gray-900/10 pb-12">
             <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Personal Information
+              Additional Information
             </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              Use a permanent address where you can receive mail.
-            </p>
 
             <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="first-name"
+                  htmlFor="price"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Price
                 </label>
                 <div className="mt-2">
                   <input
-                    type="text"
-                    name="first-name"
-                    id="first-name"
+                    type="number"
+                    name="price"
+                    id="price"
+                    min={0}
                     autoComplete="given-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("price")}
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="last-name"
+                  htmlFor="discountpercentage"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
                   Discount
@@ -108,84 +129,91 @@ export default function AddNewProduct() {
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="last-name"
-                    id="last-name"
+                    name="discountpercentage"
+                    id="discountpercentage"
                     autoComplete="family-name"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    min={0}
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-4">
                 <label
-                  htmlFor="email"
+                  htmlFor="stock"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Email address
+                  Stock
                 </label>
                 <div className="mt-2">
                   <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
+                    id="stock"
+                    name="stock"
+                    type="number"
+                    min={0}
+                    autoComplete="stock"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("stock")}
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-3">
                 <label
-                  htmlFor="country"
+                  htmlFor="brand"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Country
+                  Brand
                 </label>
                 <div className="mt-2">
                   <select
-                    id="country"
-                    name="country"
-                    autoComplete="country-name"
+                    id="brand"
+                    name="brand"
+                    {...register("brand")}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
                   >
-                    <option>United States</option>
-                    <option>Canada</option>
-                    <option>Mexico</option>
+                    <option value={""}>--choose Brand--</option>
+                    {brand.map((el) => (
+                      <option value={el.value}>{el.label}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+              <div className="sm:col-span-3">
+                <label
+                  htmlFor="category"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Category
+                </label>
+                <div className="mt-2">
+                  <select
+                    id="category"
+                    name="category"
+                    {...register("category")}
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:max-w-xs sm:text-sm sm:leading-6"
+                  >
+                    <option value={""}>--choose category--</option>
+                    {category.map((el) => (
+                      <option value={el.value}>{el.label}</option>
+                    ))}
                   </select>
                 </div>
               </div>
 
-              <div className="col-span-full">
+              <div className="sm:col-span-2">
                 <label
-                  htmlFor="street-address"
+                  htmlFor="image1"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  Street address
+                  Image1
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="street-address"
-                    id="street-address"
-                    autoComplete="street-address"
-                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                  />
-                </div>
-              </div>
-
-              <div className="sm:col-span-2 sm:col-start-1">
-                <label
-                  htmlFor="city"
-                  className="block text-sm font-medium leading-6 text-gray-900"
-                >
-                  City
-                </label>
-                <div className="mt-2">
-                  <input
-                    type="text"
-                    name="city"
-                    id="city"
-                    autoComplete="address-level2"
+                    name="image1"
+                    id="image1"
+                    {...register("image1")}
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                   />
                 </div>
@@ -193,51 +221,77 @@ export default function AddNewProduct() {
 
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="region"
+                  htmlFor="image2"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  State / Province
+                  Image2
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="region"
-                    id="region"
-                    autoComplete="address-level1"
+                    name="image2"
+                    id="image2"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("image2")}
                   />
                 </div>
               </div>
 
               <div className="sm:col-span-2">
                 <label
-                  htmlFor="postal-code"
+                  htmlFor="image3"
                   className="block text-sm font-medium leading-6 text-gray-900"
                 >
-                  ZIP / Postal code
+                  Image3
                 </label>
                 <div className="mt-2">
                   <input
                     type="text"
-                    name="postal-code"
-                    id="postal-code"
-                    autoComplete="postal-code"
+                    name="image3"
+                    id="image3"
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("image3")}
+                  />
+                </div>
+              </div>
+
+              <div className="sm:col-span-2">
+                <label
+                  htmlFor="image4"
+                  className="block text-sm font-medium leading-6 text-gray-900"
+                >
+                  Image4
+                </label>
+                <div className="mt-2">
+                  <input
+                    type="text"
+                    name="image4"
+                    id="image4"
+                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                    {...register("image4")}
                   />
                 </div>
               </div>
             </div>
           </div>
-
+          <div className="sm:col-span-2">
+            <label
+              htmlFor="thumbnail"
+              className="block text-sm font-medium leading-6 text-gray-900"
+            >
+              Thumbnail
+            </label>
+            <div className="mt-2">
+              <input
+                type="text"
+                name="thumbnail"
+                id="thumbnail"
+                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                {...register("thumbnail")}
+              />
+            </div>
+          </div>
           <div className="border-b border-gray-900/10 pb-12">
-            <h2 className="text-base font-semibold leading-7 text-gray-900">
-              Notifications
-            </h2>
-            <p className="mt-1 text-sm leading-6 text-gray-600">
-              We'll always let you know description important changes, but you
-              pick what else you want to hear description.
-            </p>
-
             <div className="mt-10 space-y-10">
               <fieldset>
                 <legend className="text-sm font-semibold leading-6 text-gray-900">
@@ -319,7 +373,7 @@ export default function AddNewProduct() {
             type="button"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
-            Cancel
+            <Link to="/admin">Cancel</Link>
           </button>
           <button
             type="submit"

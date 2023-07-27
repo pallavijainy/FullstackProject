@@ -313,35 +313,32 @@ function ProductGrid({ products }) {
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-6">
             {products.map((el) => (
               <div key={el.id}>
-                <Link to={`/productdetail/${el.id}`}>
-                  <div className="group relative border-4 px-4 py-4">
-                    <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
-                      <img
-                        src={el.thumbnail}
-                        alt={el.thumbnail}
-                        className="h-full w-full lg:h-full lg:w-full"
-                      />
-                    </div>
-                    <div className="mt-4 flex justify-between">
-                      <div>
-                        <h3 className="text-sm text-gray-700">
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {el.title}
-                        </h3>
+                {/* <Link to={`/productdetail/${el.id}`}> */}
+                <div className="group relative border-4 px-4 py-4">
+                  <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                    <img
+                      src={el.thumbnail}
+                      alt={el.thumbnail}
+                      className="h-full w-full lg:h-full lg:w-full"
+                    />
+                  </div>
+                  <div className="mt-4 flex justify-between">
+                    <div>
+                      <h3 className="text-sm text-gray-700">
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {el.title}
+                      </h3>
 
-                        <p className="inline-flex mt-1 text-sm text-gray-500">
-                          <StarIcon className="w-6 h-6" /> {el.rating}
-                        </p>
-                      </div>
-                      <p className="text-sm font-medium text-gray-900">
-                        ₹{el.price}
+                      <p className="inline-flex mt-1 text-sm text-gray-500">
+                        <StarIcon className="w-6 h-6" /> {el.rating}
                       </p>
                     </div>
+                    <p className="text-sm font-medium text-gray-900">
+                      ₹{el.price}
+                    </p>
                   </div>
-                </Link>
+                </div>
+                {/* </Link> */}
                 <button className="rounded-md bg-red-600 px-3 py-3 mt-5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
                   Edit Product
                 </button>

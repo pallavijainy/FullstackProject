@@ -299,15 +299,17 @@ function Pagination({ handlePagination, page, totalItem }) {
 }
 
 function ProductGrid({ products }) {
+  console.log(products, "sfjsfjsoifjsi");
   return (
     <div className="lg:col-span-3">
       {/* //product list */}
       <div className="bg-white">
         <div className="mx-auto max-w-2xl px-0 py-0 sm:px-0 sm:py-0 lg:max-w-7xl lg:px-0">
           <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-6">
-            {products.map((el) => (
-              <Link key={el.id} to={`/productdetail/${el.id}`}>
-                <div className="group relative border-4 px-4 py-4">
+            {console.log(products)}
+            {products?.map((el) => (
+              <div className="group relative border-4 px-4 py-4">
+                <Link key={el.id} to={`/productdetail/${el.id}`}>
                   <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <img
                       src={el.thumbnail}
@@ -330,8 +332,8 @@ function ProductGrid({ products }) {
                       ₹{el.price}
                     </p>
                   </div>
-                </div>
-              </Link>
+                </Link>
+              </div>
             ))}
           </div>
         </div>

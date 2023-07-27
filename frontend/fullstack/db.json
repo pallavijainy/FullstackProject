@@ -48,7 +48,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ]
     },
     {
       "id": 4,
@@ -1426,7 +1428,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/78/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/78/thumbnail.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/78/thumbnail.jpg"
+      ]
     },
     {
       "id": 79,
@@ -1439,7 +1443,9 @@
       "brand": "Fashion Jewellery",
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/79/1.jpg"]
+      "images": [
+        "https://i.dummyjson.com/data/products/79/1.jpg"
+      ]
     },
     {
       "id": 80,
@@ -1832,6 +1838,168 @@
         "https://i.dummyjson.com/data/products/100/3.jpg",
         "https://i.dummyjson.com/data/products/100/thumbnail.jpg"
       ]
+    },
+    {
+      "title": "mac",
+      "description": "sf",
+      "price": "32",
+      "stock": "31",
+      "brand": "Samsung",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/1.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png"
+      ],
+      "rating": 0,
+      "id": 101
+    },
+    {
+      "title": "sfs",
+      "description": "sdf",
+      "price": "32",
+      "stock": "32",
+      "brand": "Apple",
+      "category": "laptops",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/1.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png"
+      ],
+      "rating": 0,
+      "id": 102
+    },
+    {
+      "title": "",
+      "description": "",
+      "price": "",
+      "stock": "",
+      "brand": "",
+      "category": "",
+      "thumbnail": "",
+      "images": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rating": 0,
+      "id": 103
+    },
+    {
+      "title": "fdsfs",
+      "description": "",
+      "price": "",
+      "stock": "",
+      "brand": "",
+      "category": "",
+      "thumbnail": "",
+      "images": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rating": 0,
+      "id": 104
+    },
+    {
+      "title": "dfs",
+      "description": "",
+      "price": "",
+      "stock": "",
+      "brand": "",
+      "category": "",
+      "thumbnail": "",
+      "images": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rating": 0,
+      "id": 105
+    },
+    {
+      "title": "cdxc",
+      "description": "",
+      "price": "",
+      "stock": "",
+      "brand": "",
+      "category": "",
+      "thumbnail": "",
+      "images": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rating": 0,
+      "id": 106
+    },
+    {
+      "title": "pallavi",
+      "description": "sdfs",
+      "price": "324",
+      "stock": "23",
+      "brand": "Apple",
+      "category": "smartphones",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/1.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png"
+      ],
+      "rating": 0,
+      "id": 107
+    },
+    {
+      "title": "pal",
+      "description": "sf",
+      "price": "3",
+      "stock": "3",
+      "brand": "Apple",
+      "category": "fragrances",
+      "thumbnail": "https://i.dummyjson.com/data/products/6/1.png",
+      "images": [
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png",
+        "https://i.dummyjson.com/data/products/6/1.png"
+      ],
+      "rating": 0,
+      "id": 108
+    },
+    {
+      "title": "akash",
+      "description": "",
+      "price": "",
+      "stock": "",
+      "brand": "",
+      "category": "",
+      "thumbnail": "",
+      "images": [
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rating": 0,
+      "id": 109
     }
   ],
   "category": [
@@ -2293,7 +2461,9 @@
       "brand": "Samsung",
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-      "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+      "images": [
+        "https://i.dummyjson.com/data/products/3/1.jpg"
+      ],
       "quantity": 1,
       "user": 8,
       "productId": 3,
@@ -2313,7 +2483,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 9,
           "productId": 3,
@@ -2524,7 +2696,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -2829,7 +3003,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4088,7 +4264,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4211,7 +4389,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4312,7 +4492,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4901,7 +5083,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -4973,7 +5157,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -5041,7 +5227,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,
@@ -5091,7 +5279,9 @@
           "brand": "Samsung",
           "category": "smartphones",
           "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
-          "images": ["https://i.dummyjson.com/data/products/3/1.jpg"],
+          "images": [
+            "https://i.dummyjson.com/data/products/3/1.jpg"
+          ],
           "quantity": 1,
           "user": 8,
           "productId": 3,

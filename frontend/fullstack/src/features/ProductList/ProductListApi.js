@@ -1,3 +1,4 @@
+import axios from "axios";
 export function fetchAllProducts() {
   return new Promise(async (resolve) => {
     const response = await fetch("http://localhost:8080/products");
@@ -62,5 +63,19 @@ export function fetchProductById(id) {
     const response = await fetch(`http://localhost:8080/products/${id}`);
     const data = await response.json();
     resolve({ data });
+  });
+}
+
+//add new product
+
+export function AddNewPro(newproduct) {
+  console.log(newproduct);
+  return new Promise(async (resolve) => {
+    const response = await axios.post(
+      "http://localhost:8080/products",
+      newproduct
+    );
+    console.log(response.data, "d");
+    resolve(response.data);
   });
 }
