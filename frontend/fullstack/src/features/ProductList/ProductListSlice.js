@@ -70,7 +70,7 @@ export const AddNewProAsync = createAsyncThunk(
   async (newproduct) => {
     const response = await AddNewPro(newproduct);
     console.log(response);
-    return response.data;
+    return response;
   }
 );
 
@@ -138,6 +138,7 @@ export const productSlice = createSlice({
       })
       .addCase(AddNewProAsync.fulfilled, (state, action) => {
         state.status = "idle";
+        state.products.push(action.payload);
       });
   },
 });

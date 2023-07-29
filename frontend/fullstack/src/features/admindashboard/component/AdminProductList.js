@@ -339,9 +339,14 @@ function ProductGrid({ products }) {
                   </div>
                 </div>
                 {/* </Link> */}
-                <button className="rounded-md bg-red-600 px-3 py-3 mt-5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">
-                  Edit Product
-                </button>
+                <div className="mt-5">
+                  <Link
+                    to={`/edit/${el.id}`}
+                    className="rounded-md bg-red-600 px-3 py-3 mt-5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+                  >
+                    Edit Product
+                  </Link>
+                </div>
               </div>
             ))}
           </div>

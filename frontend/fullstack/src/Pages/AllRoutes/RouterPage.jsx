@@ -56,6 +56,7 @@ const RouterPage = () => {
       <Route path="/profile" element={<MyProfilePage />}></Route>
       <Route path="/productdetail/:id" element={<ProductDetailPage />}></Route>
       <Route path="/ordersuccess/:id" element={<OrderSuccess />}></Route>
+      <Route path="/edit/:id" element={<AddNewProductPage />}></Route>
       <Route path="*" element={<PageNotFound />}></Route>
     </Routes>
   );

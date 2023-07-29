@@ -1,17 +1,29 @@
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   AddNewProAsync,
   AllBrand,
   AllCategory,
+  fetchProductByIdAsync,
+  selectedProductbyId,
 } from "../../ProductList/ProductListSlice";
 
 export default function AddNewProduct() {
   const category = useSelector(AllCategory);
   const brand = useSelector(AllBrand);
-
+  const params = useParams();
+  const editid = params.id;
   const dispatch = useDispatch();
+  const selectedProductid = useSelector(selectedProductbyId);
+
+  useEffect(() => {
+    if (selectedProductid) {
+      dispatch(fetchProductByIdAsync(editid));
+    }
+  }, [selectedProductid, dispatch]);
+
   const {
     register,
     handleSubmit,
